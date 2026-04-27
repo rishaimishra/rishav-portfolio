@@ -1,5 +1,5 @@
 import React from 'react'
-import { Project } from '@prisma/client'
+import type { Project } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { CustomButton } from '@/components/ui/CustomButton'
 import { ExternalLink } from 'lucide-react'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Project } from '@prisma/client'
+import type { Project } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { Plus, Trash2, Edit } from 'lucide-react'
 import Link from 'next/link'

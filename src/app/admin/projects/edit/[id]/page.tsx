@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import { Project } from '@prisma/client'
+import type { Project } from '@prisma/client'
 import { useRouter, useParams } from 'next/navigation'
 import { CustomButton } from '@/components/ui/CustomButton'
 import { ArrowLeft, Save, Loader2 } from 'lucide-react'

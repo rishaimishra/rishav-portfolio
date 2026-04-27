@@ -1,5 +1,5 @@
 import React from 'react'
-import { Lead } from '@prisma/client'
+import type { Lead } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { Trash2 } from 'lucide-react'
 import { revalidatePath } from 'next/cache'
