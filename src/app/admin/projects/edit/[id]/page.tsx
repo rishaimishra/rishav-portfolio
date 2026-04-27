@@ -16,7 +16,7 @@ export default function EditProjectPage() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(\`/api/projects/\${id}\`)
+        const res = await fetch(`/api/projects/${id}`)
         if (res.ok) {
           const data = await res.json()
           setProject(data)
@@ -47,7 +47,7 @@ export default function EditProjectPage() {
     }
 
     try {
-      const res = await fetch(\`/api/projects/\${id}\`, {
+      const res = await fetch(`/api/projects/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }

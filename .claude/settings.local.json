@@ -7,7 +7,8 @@
       "Bash(npx ts-node *)",
       "Bash(mkdir -p src/app/api/auth/\\\\[...nextauth\\\\])",
       "Bash(mv app/api/auth/\\\\[...nextauth\\\\]/route.ts src/app/api/auth/\\\\[...nextauth\\\\]/)",
-      "Bash(npm show *)"
+      "Bash(npm show *)",
+      "Bash(npm run *)"
     ]
   }
 }

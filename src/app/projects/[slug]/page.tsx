@@ -7,7 +7,7 @@ import { GithubIcon } from '@/components/ui/Icons'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
+export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   
   const project = await prisma.project.findUnique({
