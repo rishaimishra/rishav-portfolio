@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
+import { Project } from '@prisma/client'
 import { useRouter, useParams } from 'next/navigation'
 import { CustomButton } from '@/components/ui/CustomButton'
 import { ArrowLeft, Save, Loader2 } from 'lucide-react'
@@ -11,7 +12,7 @@ export default function EditProjectPage() {
   const { id } = useParams()
   const [loading, setLoading] = useState(false)
   const [fetching, setFetching] = useState(true)
-  const [project, setProject] = useState<any>(null)
+  const [project, setProject] = useState<Project | null>(null)
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -128,9 +129,9 @@ export default function EditProjectPage() {
           </div>
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-widest text-foreground/50 ml-2">Image URL</label>
-            <input 
-              name="image" 
-              defaultValue={project.image}
+            <input
+              name="image"
+              defaultValue={project.image || ''}
               className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:border-primary outline-none transition-all"
             />
           </div>
@@ -139,17 +140,17 @@ export default function EditProjectPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-widest text-foreground/50 ml-2">Live URL</label>
-            <input 
-              name="liveUrl" 
-              defaultValue={project.liveUrl}
+            <input
+              name="liveUrl"
+              defaultValue={project.liveUrl || ''}
               className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:border-primary outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-widest text-foreground/50 ml-2">GitHub URL</label>
-            <input 
-              name="githubUrl" 
-              defaultValue={project.githubUrl}
+            <input
+              name="githubUrl"
+              defaultValue={project.githubUrl || ''}
               className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:border-primary outline-none transition-all"
             />
           </div>
