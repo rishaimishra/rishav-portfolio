@@ -1,11 +1,13 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import type { Project } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
 import { useRouter, useParams } from 'next/navigation'
 import { CustomButton } from '@/components/ui/CustomButton'
 import { ArrowLeft, Save, Loader2 } from 'lucide-react'
 import Link from 'next/link'
+
+type Project = Awaited<ReturnType<typeof prisma.project.findMany>>[number]
 
 export default function EditProjectPage() {
   const router = useRouter()

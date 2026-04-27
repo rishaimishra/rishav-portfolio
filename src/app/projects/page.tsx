@@ -1,5 +1,4 @@
 import React from 'react'
-import type { Project } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { CustomButton } from '@/components/ui/CustomButton'
 import { ExternalLink } from 'lucide-react'
@@ -7,6 +6,8 @@ import { GithubIcon } from '@/components/ui/Icons'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Metadata } from 'next'
+
+type Project = Awaited<ReturnType<typeof prisma.project.findMany>>[number]
 
 export const metadata: Metadata = {
   title: "Projects | Rishav Kumar",

@@ -1,8 +1,9 @@
 import React from 'react'
-import type { Lead } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { Trash2 } from 'lucide-react'
 import { revalidatePath } from 'next/cache'
+
+type Lead = Awaited<ReturnType<typeof prisma.lead.findMany>>[number]
 
 export default async function LeadsPage() {
   const leads = await prisma.lead.findMany({
