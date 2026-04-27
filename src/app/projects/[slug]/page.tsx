@@ -47,7 +47,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 <Tag size={14} /> Technologies
               </h3>
               <div className="flex flex-wrap gap-2">
-                {project.techStack.map(t => (
+                {project.techStack.map((t: string) => (
                   <span key={t} className="py-1 px-3 rounded-lg bg-primary/10 text-primary text-xs font-bold">
                     {t}
                   </span>

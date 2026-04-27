@@ -35,7 +35,7 @@ export default async function ProjectsPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project: Project) => (
             <div key={project.id} className="group glass rounded-[2rem] overflow-hidden border-white/5 hover:border-primary/30 transition-all flex flex-col">
               <Link href={`/projects/${project.slug}`} className="aspect-video relative overflow-hidden">
                 <Image
@@ -47,7 +47,7 @@ export default async function ProjectsPage() {
               </Link>
               <div className="p-8 flex flex-col flex-grow">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map(t => (
+                  {project.techStack.map((t: string) => (
                     <span key={t} className="text-[10px] font-bold tracking-widest uppercase py-1 px-2 rounded bg-primary/10 text-primary">
                       {t}
                     </span>

@@ -56,7 +56,7 @@ export default async function AdminProjectsPage() {
                 <div>
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.techStack.map(t => (
+                    {project.techStack.map((t: string) => (
                       <span key={t} className="text-[10px] font-bold uppercase py-0.5 px-2 rounded bg-primary/10 text-primary">
                         {t}
                       </span>
