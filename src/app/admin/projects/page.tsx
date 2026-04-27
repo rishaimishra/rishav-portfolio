@@ -1,4 +1,5 @@
 import React from 'react'
+import { Project } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { Plus, Trash2, Edit } from 'lucide-react'
 import Link from 'next/link'
@@ -41,7 +42,7 @@ export default async function AdminProjectsPage() {
             </Link>
           </div>
         ) : (
-          projects.map((project) => (
+          projects.map((project: Project) => (
             <div key={project.id} className="glass p-6 rounded-[2rem] border-white/5 flex gap-6 group">
               <div className="w-40 h-40 rounded-2xl overflow-hidden bg-white/5 flex-shrink-0">
                 <img 

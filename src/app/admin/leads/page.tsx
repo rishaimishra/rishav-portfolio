@@ -1,4 +1,5 @@
 import React from 'react'
+import { Lead } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { Trash2 } from 'lucide-react'
 import { revalidatePath } from 'next/cache'
@@ -28,7 +29,7 @@ export default async function LeadsPage() {
             <p className="text-foreground/40 text-lg">No leads found.</p>
           </div>
         ) : (
-          leads.map((lead) => (
+          leads.map((lead: Lead) => (
             <div key={lead.id} className="glass p-8 rounded-[2rem] border-white/5 group">
               <div className="flex flex-col md:flex-row justify-between gap-6">
                 <div className="flex-grow">
