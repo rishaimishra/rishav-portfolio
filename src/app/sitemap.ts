@@ -8,7 +8,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     select: { slug: true, updatedAt: true }
   })
 
-  const projectUrls = projects.map((p) => ({
+  type ProjectSummary = {
+    slug: string;
+    updatedAt: Date;
+  }
+
+  const projectUrls = projects.map((p: ProjectSummary) => ({
     url: `${baseUrl}/projects/${p.slug}`,
     lastModified: p.updatedAt,
   }))
