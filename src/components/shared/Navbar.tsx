@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle'
@@ -16,6 +17,12 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+
+  // Don't show public navbar on admin pages
+  if (pathname?.startsWith('/admin')) {
+    return null
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)

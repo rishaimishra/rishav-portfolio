@@ -1,7 +1,17 @@
+"use client"
+
 import React from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export function Footer() {
+  const pathname = usePathname()
+
+  // Don't show public footer on admin pages
+  if (pathname?.startsWith('/admin')) {
+    return null
+  }
+
   return (
     <footer className="border-t border-white/5 bg-background py-12">
       <div className="container mx-auto px-6">
