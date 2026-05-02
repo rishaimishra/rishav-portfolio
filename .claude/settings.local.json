@@ -8,7 +8,10 @@
       "Bash(mkdir -p src/app/api/auth/\\\\[...nextauth\\\\])",
       "Bash(mv app/api/auth/\\\\[...nextauth\\\\]/route.ts src/app/api/auth/\\\\[...nextauth\\\\]/)",
       "Bash(npm show *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(mv prisma.config.ts prisma.config.ts.bak)",
+      "Bash(mv prisma.config.ts.bak prisma.config.ts)",
+      "Bash(rm -rf src/generated/client2)"
     ]
   }
 }

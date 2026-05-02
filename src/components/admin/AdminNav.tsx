@@ -11,14 +11,20 @@ import {
   LogOut,
   Globe,
   Menu,
-  X
+  X,
+  Database,
+  Phone,
+  Utensils
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { name: 'Projects', href: '/admin/projects', icon: Briefcase },
-  { name: 'Leads', href: '/admin/leads', icon: Users },
+  { name: 'Portfolio Leads', href: '/admin/leads', icon: Users },
+  { name: 'Gst-billing Leads', href: '/admin/external-contacts', icon: Phone },
+  { name: 'Site-indexer/contract-analyze Leads', href: '/admin/external-leads', icon: Database },
+  { name: 'Restaurant Pos Leads', href: '/admin/external-restaurant-leads', icon: Utensils },
 ]
 
 export function AdminNav() {

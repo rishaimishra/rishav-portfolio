@@ -1,22 +1,30 @@
 import React from 'react'
 import { prisma } from '@/lib/prisma'
-import { 
-  Briefcase, 
-  MessageSquare, 
-  TrendingUp, 
-  Users 
+import { prisma2 } from '@/lib/prisma2'
+import Link from 'next/link'
+import {
+  Briefcase,
+  MessageSquare,
+  TrendingUp,
+  Users,
+  Database
 } from 'lucide-react'
 
 export default async function AdminDashboard() {
-  const [projectsCount, leadsCount] = await Promise.all([
+  const [projectsCount, leadsCount, extContactsCount, extLeadsCount, extRestContactsCount] = await Promise.all([
     prisma.project.count(),
-    prisma.lead.count()
+    prisma.lead.count(),
+    prisma2.contacts.count(),
+    prisma2.leads.count(),
+    prisma2.restaurant_contacts.count()
   ])
 
   const stats = [
-    { label: 'Total Projects', value: projectsCount, icon: <Briefcase className="text-primary" /> },
-    { label: 'Total Leads', value: leadsCount, icon: <MessageSquare className="text-accent" /> },
-    { label: 'Active Status', value: 'Live', icon: <TrendingUp className="text-green-500" /> },
+    { label: 'Total Projects', value: projectsCount, icon: <Briefcase className="text-primary" />, href: '/admin/projects' },
+    { label: 'Total Leads', value: leadsCount, icon: <MessageSquare className="text-accent" />, href: '/admin/leads' },
+    { label: 'Ext. Contacts', value: extContactsCount, icon: <Users className="text-blue-500" />, href: '/admin/external-contacts' },
+    { label: 'Ext. Leads', value: extLeadsCount, icon: <Database className="text-green-500" />, href: '/admin/external-leads' },
+    { label: 'Restaurant Leads', value: extRestContactsCount, icon: <TrendingUp className="text-orange-500" />, href: '/admin/external-restaurant-leads' },
   ]
 
   return (
@@ -26,15 +34,15 @@ export default async function AdminDashboard() {
         <p className="text-foreground/50">Here is an overview of your portfolio activity.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
         {stats.map((stat) => (
-          <div key={stat.label} className="glass p-8 rounded-[2rem] border-white/5">
-            <div className="p-3 bg-white/5 rounded-xl w-fit mb-6">
+          <Link key={stat.label} href={stat.href} className="glass p-8 rounded-[2rem] border-white/5 hover:bg-white/5 transition-colors group">
+            <div className="p-3 bg-white/5 rounded-xl w-fit mb-6 group-hover:scale-110 transition-transform">
               {stat.icon}
             </div>
             <p className="text-sm font-bold uppercase tracking-widest text-foreground/40 mb-1">{stat.label}</p>
             <p className="text-4xl font-bold">{stat.value}</p>
-          </div>
+          </Link>
         ))}
       </div>
 
