@@ -4,19 +4,26 @@ import { prisma } from '@/lib/prisma'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://rishav.srvtechservices.com'
 
-  const projects = await prisma.project.findMany({
-    select: { slug: true, updatedAt: true }
-  })
+  let projectUrls: any[] = []
 
-  type ProjectSummary = {
-    slug: string;
-    updatedAt: Date;
+  try {
+    const projects = await prisma.project.findMany({
+      select: { slug: true, updatedAt: true }
+    })
+
+    type ProjectSummary = {
+      slug: string;
+      updatedAt: Date;
+    }
+
+    projectUrls = projects.map((p: ProjectSummary) => ({
+      url: `${baseUrl}/projects/${p.slug}`,
+      lastModified: p.updatedAt,
+    }))
+  } catch (error) {
+    console.error('Error fetching projects for sitemap:', error)
+    // Continue with static URLs if DB fails
   }
-
-  const projectUrls = projects.map((p: ProjectSummary) => ({
-    url: `${baseUrl}/projects/${p.slug}`,
-    lastModified: p.updatedAt,
-  }))
 
   return [
     { url: baseUrl, lastModified: new Date() },
