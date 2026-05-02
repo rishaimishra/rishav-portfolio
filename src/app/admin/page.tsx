@@ -21,10 +21,10 @@ export default async function AdminDashboard() {
 
   const stats = [
     { label: 'Total Projects', value: projectsCount, icon: <Briefcase className="text-primary" />, href: '/admin/projects' },
-    { label: 'Total Leads', value: leadsCount, icon: <MessageSquare className="text-accent" />, href: '/admin/leads' },
-    { label: 'Ext. Contacts', value: extContactsCount, icon: <Users className="text-blue-500" />, href: '/admin/external-contacts' },
-    { label: 'Ext. Leads', value: extLeadsCount, icon: <Database className="text-green-500" />, href: '/admin/external-leads' },
-    { label: 'Restaurant Leads', value: extRestContactsCount, icon: <TrendingUp className="text-orange-500" />, href: '/admin/external-restaurant-leads' },
+    { label: 'Portfolio Leads', value: leadsCount, icon: <MessageSquare className="text-accent" />, href: '/admin/leads' },
+    { label: 'Gst-billing Leads', value: extContactsCount, icon: <Users className="text-blue-500" />, href: '/admin/external-contacts' },
+    { label: 'Site-indexer Leads', value: extLeadsCount, icon: <Database className="text-green-500" />, href: '/admin/external-leads' },
+    { label: 'Restaurant POS Leads', value: extRestContactsCount, icon: <TrendingUp className="text-orange-500" />, href: '/admin/external-restaurant-leads' },
   ]
 
   return (
